@@ -1,0 +1,139 @@
+<html>
+<head>
+	<title>Food You Like App</title>
+	<style>
+    * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+	text-align:center;
+    }
+
+    body {
+        background-color: #e0f7fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 70px;
+        color: #00796b;
+        margin-top: 50px;
+    }
+
+    form {
+        margin: 50px auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 20px;
+        width: 70%;
+        max-width: 800px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"] {
+        font-size: 40px;
+        padding: 10px 20px;
+        width: 80%;
+        max-width: 600px;
+        border: 2px solid #00796b;
+        border-radius: 10px;
+        margin-bottom: 30px;
+    }
+
+    label {
+        display: inline-block;
+        margin: 15px;
+        font-size: 45px;
+        color: #004d40;
+        cursor: pointer;
+    }
+
+    input[type="radio"] {
+        height: 30px;
+        width: 30px;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    input[type="submit"] {
+        font-size: 45px;
+        padding: 10px 40px;
+        background-color: #00796b;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #004d40;
+    }
+
+    h2#msg {
+        font-size: 50px;
+        margin-top: 30px;
+        color: #00695c;
+    }
+</style>
+
+</head>
+<body>
+	<h1>Food App</h1>
+	<form onsubmit="show()">
+	<input type="text" id="name" placeholder="Enter your name"/>
+	<br/><br/>
+	<label><input type="radio" name="c" id="ni"/>North Indian</label>
+	<label><input type="radio" name="c" id="si"/>South Indian</label>
+	<label><input type="radio" name="c" id="ff"/>Fast Food</label>
+	<br/><br/>
+	<input type="Submit"/>
+	</form>
+	<h2 id="msg"/>
+<script>
+	function show()
+{
+	event.preventDefault();
+	let name=document.getElementById("name");
+	let ni=document.getElementById("ni");
+	let si=document.getElementById("si");
+	let ff=document.getElementById("ff");
+	let msg=document.getElementById("msg");
+	if(name.value==="")
+{
+	alert("Please Enter Name");
+	msg.innerHTML = "";
+	name.focus();
+	return;
+}
+	if(name.value.trim()==="")
+{
+	alert("Name cannot be blank spaces");
+	msg.innerHTML = "";
+	name.value="";
+	name.focus();
+	return;
+}
+	if(!name.value.match("^[A-Za-z ]+$"))
+{
+	alert("Name should contain only alphabets");
+	msg.innerHTML = "";
+	name.value="";
+	name.focus();
+	return;
+}
+	let choice="";
+	if(ni.checked) choice="North Indian";
+	if(si.checked) choice="South Indian";
+	else choice="Fast Food";
+	let ans="Your name is "+name.value+" and your choice is "+choice;
+	msg.innerHTML=ans;
+}
+</script>
+</body>
+</html>
+
+
+
+
